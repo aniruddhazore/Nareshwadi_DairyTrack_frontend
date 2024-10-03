@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import {
   StyleSheet,
   Text,
@@ -350,7 +351,7 @@ const Index = () => {
                 entry.synced = true;
               } else if (entry.isEdited) {
                 // If edited, update the server
-                await axios.put(`https://nareshwadi-goshala.onrender.com/milk/date/${entry.date}`, entry);
+                await axios.put("https://nareshwadi-goshala.onrender.com/milk/date/${entry.date}", entry);
                 entry.isEdited = false; // Mark as not edited after successful update
               }
             } catch (error) {
@@ -645,9 +646,6 @@ const Index = () => {
         >
           <Feather name="edit" size={24} color="white" />
         </TouchableOpacity>
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 20 }}>
-          Hi, {userRole}
-        </Text>
         {!isConnected && (
         <View style={styles.offlineContainer}>
           <Text style={styles.offlineText}>

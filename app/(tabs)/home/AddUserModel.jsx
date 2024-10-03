@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 import axios from 'axios';
-
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 const AddUserModal = ({ isVisible, onClose, onAddUser }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

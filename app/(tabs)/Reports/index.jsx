@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Alert } from "react-native";

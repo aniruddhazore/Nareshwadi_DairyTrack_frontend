@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   Modal,
 } from "react-native";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import {
   Fontisto,
   MaterialIcons,

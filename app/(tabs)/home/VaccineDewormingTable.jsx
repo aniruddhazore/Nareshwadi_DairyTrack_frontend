@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
 import axios from 'axios';
-
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 const VaccineDewormingTable = () => {
   const [vaccinations, setVaccinations] = useState([]);
   const [dewormings, setDewormings] = useState([]);
@@ -9,7 +9,7 @@ const VaccineDewormingTable = () => {
   useEffect(() => {
     const fetchVaccinations = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/vaccinations');
+        const response = await axios.get('https://nareshwadi-goshala.onrender.com/vaccinations');
         setVaccinations(response.data);
       } catch (error) {
         console.error('Error fetching vaccinations:', error);
@@ -18,7 +18,7 @@ const VaccineDewormingTable = () => {
 
     const fetchDewormings = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/dewormings');
+        const response = await axios.get('${apiUrl}/dewormings');
         setDewormings(response.data);
       } catch (error) {
         console.error('Error fetching dewormings:', error);

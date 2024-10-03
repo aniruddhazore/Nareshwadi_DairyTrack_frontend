@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import {
   View,
   Text,
@@ -17,7 +18,7 @@ const VaccinationInfo = () => {
 
   const fetchVaccines = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/vaccines");
+      const response = await axios.get("https://nareshwadi-goshala.onrender.com/vaccines");
       setVaccines(response.data);
     } catch (error) {
       console.error("Error fetching vaccines:", error);

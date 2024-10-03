@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import {
   View,
   Text,
@@ -63,6 +64,7 @@ const MilkData = () => {
   const fetchMilkData = async () => {
     setLoading(true);
     try {
+      console.log(date)
       const response = await axios.get(`https://nareshwadi-goshala.onrender.com/milk/${date}`);
       const milkData = response.data;
       if (milkData && milkData.data) {

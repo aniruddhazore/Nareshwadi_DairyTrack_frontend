@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import { View, Text, SectionList, StyleSheet, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
@@ -9,7 +10,7 @@ const MonthlyVaccinations = () => {
   useEffect(() => {
     const fetchCattleVaccinations = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/cattle-vaccinations/current-month');
+        const response = await axios.get('${apiUrl}/cattle-vaccinations/current-month');
         const formattedData = response.data.map(cattle => ({
           title: cattle.name,
           data: cattle.vaccinations.length > 0 ? cattle.vaccinations : [{ _id: 'no-vaccinations', vaccine: { name: 'No vaccinations this month' }, date: null }],

@@ -10,6 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from "react-native";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import React, { useState, useEffect } from "react";
 import { Fontisto } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -112,7 +113,7 @@ const login = () => {
   const fetchExistingMilkData = async () => {
     try {
       console.log("Fetching Existing Milk data");
-      const response = await axios.get(`https://nareshwadi-goshala.onrender.com/milk/${date}`);
+      const response = await axios.get("https://nareshwadi-goshala.onrender.com/milk/${date}");
       const existingMilkData = response.data;
       if (existingMilkData && existingMilkData.data) {
         const updatedData = data.map(item => {

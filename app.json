@@ -17,6 +17,11 @@
       "supportsTablet": true
     },
     "android": {
+      "usesCleartextTraffic":"true",
+      "permissions": [
+        "ACCESS_NETWORK_STATE",
+        "INTERNET"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-dairy.png",
         "backgroundColor": "#ffffff"
@@ -27,7 +32,19 @@
       "favicon": "./assets/logo-dairy.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "permissions": [
+        "ACCESS_NETWORK_STATE",
+        "INTERNET"
+      ]
+          }
+        }
+      ]
     ],
     "extra": {
       "router": {

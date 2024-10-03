@@ -102,7 +102,6 @@ const MilkEntry = () => {
         milkEntry: '',
         session1Filled: false,
         session2Filled: false,
-        serialNumber: cattle.serialNumber,
       }));
       setData(cattleData);
       await AsyncStorage.setItem('cattleData', JSON.stringify(cattleData));
@@ -141,16 +140,16 @@ const MilkEntry = () => {
     try {
       const localUsers = await AsyncStorage.getItem('usersData');
       if (localUsers) {
-        const milkmen = JSON.parse(localUsers).filter(user => user.userType === 'Milkman');
-        setUsers(milkmen);
+        setUsers(JSON.parse(localUsers));
       }
     } catch (error) {
       console.error('Error loading local users data:', error);
     }
   };
-
+ 
   const fetchExistingMilkData = async () => {
     try {
+      
       const response = await axios.get(`https://nareshwadi-goshala.onrender.com/milk/${date}`);
       const existingMilkData = response.data;
       if (existingMilkData && existingMilkData.data) {
@@ -178,14 +177,9 @@ const MilkEntry = () => {
             'Milk entry is done for this date.',
             [
               {
-                text: 'OK',
-                onPress: () => {},
-              },
-              {
                 text: 'View Data',
                 onPress: () => navigation.navigate('MilkData'),
               },
-             
             ]
           );
         }
@@ -216,7 +210,7 @@ const MilkEntry = () => {
     setData(updatedData); // Update the state with the new serial numbers
   };
 
-// Function to update the serial numbers (API call)
+  // Function to update the serial numbers (API call)
 const updateSerialNumbers = async () => {
   // Validate serial numbers
   const serialNumbers = data.map(item => 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import {
   View,
   Text,
@@ -130,7 +131,7 @@ const VaccineUpdateDupe = () => {
 
   const fetchVaccines = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/vaccines");
+      const response = await axios.get("https://nareshwadi-goshala.onrender.com/vaccines");
       setVaccines(response.data);
     } catch (error) {
       console.error("Error fetching vaccines:", error);
@@ -139,7 +140,7 @@ const VaccineUpdateDupe = () => {
 
   const addNewVaccine = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/vaccines", {
+      const response = await axios.post("https://nareshwadi-goshala.onrender.com/vaccines", {
         name: newVaccine,
       });
       setVaccines([...vaccines, response.data.vaccine]);
@@ -151,7 +152,7 @@ const VaccineUpdateDupe = () => {
 
   const fetchCattle = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/getCattle");
+      const response = await axios.get("https://nareshwadi-goshala.onrender.com/getCattle");
       setCattle(response.data);
     } catch (error) {
       console.error("Error fetching cattle:", error);
@@ -176,7 +177,7 @@ const VaccineUpdateDupe = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:3000/vaccinations", {
+      const response = await axios.post("https://nareshwadi-goshala.onrender.com/vaccinations", {
         vaccineId: selectedVaccine,
         cattleIds: selectedCattle,
         date: vaccinationDate,

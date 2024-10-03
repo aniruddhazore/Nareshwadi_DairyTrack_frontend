@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 import {
   View,
   TextInput,
